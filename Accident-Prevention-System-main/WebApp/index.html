@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="ambulance.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+<script src="webcam.js"></script>
+<script src="rps-dataset.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+	
+		<div class="nav">
+			
+			<div class="row">
+				<div class="col-1">
+					<lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_bx07iy2i.json"
+						background="transparent" speed="1" style="width: 200px; height: 100px;" loop autoplay>
+					</lottie-player>
+				</div>
+				<div class="col-11-flex">
+	
+					<h1 class="heading">APS : Accident Prevention System - Companion for your safety</h1>
+	
+				</div>
+	
+			</div>
+		</div>
+		<div class="background-image">
+			<img class="backg" src="./bg2.jpeg" height="950px" width="1510px">
+			<div class="background-image-overlay"></div>
+		</div>
+		<div class="body" id="particle-js">
+			<div class="container">
+				<div>
+					<div>
+						<video class="video" autoplay playsinline muted id="wc" width="274" height="274"></video>
+					</div>
+					<div class="prediction" id="prediction"></div>
+				</div>
+				<br>
+				<div id="inst" class="instruction-text">
+					Take your position & click on the buttons below to collect image samples.
+				</div>
+				<br>
+				<button
+					type="button"
+					class="button button-ok"
+					id="0" 
+					onclick="handleCaptureFrame(this)"
+				>
+					Awake
+				</button>
+				<button
+					type="button"
+					class="button button-warning"
+					id="1"
+					onclick="handleCaptureFrame(this)"
+				>
+					Potentially Sleepy
+				</button>
+				<button
+					type="button"
+					class="button button-danger"
+					id="2"
+					onclick="handleCaptureFrame(this)"
+				>
+					Head Down
+				</button>
+				<br><br>
+				<div id="safe-samples">Safe Samples: 0</div>
+				<div id="warning-amples">Warning Samples: 0</div>
+				<div id="danger-samples">Danger Samples: 0</div>
+				<br>
+	
+				<button
+					type="button"
+					class="button button-default"
+					id="train"
+					onclick="doTraining()"
+				>
+					Train Network
+				</button>
+				
+				<div class="prediction-controls">
+					<div id="dummy">Once training is complete, click 'Start Predicting' to see predictions, and 'Stop Predicting' to end</div>
+					<br>
+	
+					<button
+						type="button"
+						class="button button-default"
+						id="startPredicting"
+						onclick="startPredicting()"
+						disabled
+					>
+						Start Predicting
+					</button>
+					<button
+						type="button"
+						class="button button-default"
+						id="stopPredicting"
+						onclick="stopPredicting()"
+						disabled
+					>
+						Stop Predicting
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="footer" id="archive">
+			<h4 class="foot">
+				Made with ❤ by- Team CaptainCode
+			</h4>
+			
+			
+		</div>
+		
+	
+</body>
+
+<script src="index.js"></script>
+</html>
